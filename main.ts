@@ -1,4 +1,4 @@
-// % weight=10 color=#1E90FF icon="\uf138"
+//% weight=10 color=#1E90FF icon="\uf138"
 namespace cospider {
     
     //% blockId=initSerial block="Init serial port to |TX = %Tx RX=%RX"
