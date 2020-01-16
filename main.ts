@@ -77,4 +77,10 @@ namespace cospider {
         let cmd = "AT+6+++++++++++++++#";
         serial.writeString(cmd);
     }
+    
+    //% blockId=goStop block="Stop"
+    export function goStop(): void {
+        let cmd = "AT+8+++++++++++++++#";
+        serial.writeString(cmd);
+    }
 }
