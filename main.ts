@@ -43,32 +43,34 @@ namespace cospider {
     //% time.min=0 time.max=9999
     export function runServo(index: number, angle: number, time: number): void {
             //AT+1+01+800+090+000#
+        if( angle < 0 )
+            angle = 0;
         if( angle > 300 )
             angle = 300;
 
-        angle = angle * 999 / 300;
+        angle = (angle * 999) / 300;
         // lock safe angle
         switch( index )
         {
-            case 0: // [180-680]
+            case 1: // [180-680]
                 if( angle < 180 )
                     angle = 180;
                 if( angle > 680 )
                     angle = 680;
             break;
-            case 1: // [200-900]
+            case 2: // [200-900]
                 if( angle <200 )
                     angle = 200
                 if( angle > 900 )
                     angle = 200
             break;
-            case 4: // [200-780]
+            case 5: // [200-780]
                 if (angle < 200)
                     angle = 200
                 if (angle > 780)
                     angle = 780
             break;
-            case 5: // 300-840
+            case 6: // 300-840
                 if (angle < 300)
                     angle = 300
                 if (angle > 840)
@@ -82,7 +84,7 @@ namespace cospider {
             break;        
         }
         
-        let cmd = "AT+1" + addParameter(index,2) + addParameter(angle,3) + addParameter(time,3)+"000#";
+        let cmd = "AT+1" + addParameter(index,2) + addParameter(angle,3) + addParameter(time,3)+"+000#";
         serial.writeString(cmd);
     }
 
