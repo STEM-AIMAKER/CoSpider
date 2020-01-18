@@ -21,18 +21,21 @@ namespace cospider {
             for (k = 1; k < len; k++) {
                 str += "0";
             }
-            str += i;
+            str += i.toString();
         } else if (i < 100) {
             let k = 2;
             for (k = 2; k < len; k++) {
                 str += "0";
             }
-            str += i;
-        } else if (i < 1000 && len == 4) {
-            str += "0" + i;
-        }
-         else if( i >= 1000 )
-            str += i;
+            str += i.toString(); 
+        } else if (i < 1000 ) {
+            let k = 3;
+            for (k = 3; k < len; k++) {
+                str += "0";
+            }
+            str = i.toString(); 
+        } else if( i >= 1000 )
+            str += i.toString(); 
         
         return str;
     }
