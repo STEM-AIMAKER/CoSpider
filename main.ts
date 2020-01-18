@@ -33,7 +33,8 @@ namespace cospider {
             for (k = 3; k < len; k++) {
                 str += "0";
             }
-            str +=  praseInt(i.toString()); 
+                                
+            str +=  parseInt(i.toString()); 
         } else if( i >= 1000 )
             str += i.toString(); 
         
