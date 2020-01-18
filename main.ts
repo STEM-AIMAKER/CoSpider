@@ -87,7 +87,11 @@ namespace cospider {
             break;        
         }
         
-        let cmd = "AT+1" + addParameter(index,2) + addParameter(angle,3) + addParameter(time,3)+"+000#";
+        let cmd = "AT+1" + addParameter(index,2);
+        cmd += addParameter(angle,3);
+        cmd += addParameter(time,3);
+        cmd += "+015#";
+        
         serial.writeString(cmd);
     }
 
