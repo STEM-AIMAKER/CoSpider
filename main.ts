@@ -43,6 +43,9 @@ namespace cospider {
     //% time.min=0 time.max=9999
     export function runServo(index: number, angle: number, time: number): void {
             //AT+1+01+800+090+000#
+        if( time > 999 )
+            time = 999;
+        
         if( angle < 0 )
             angle = 0;
         if( angle > 300 )
