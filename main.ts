@@ -13,6 +13,9 @@ namespace cospider {
 
     function addParameter(i: number, len: number): string {
         let str = "+";
+          if( i > 9999 )
+            i = 9999;
+        
         if (i < 10) {
             let k = 1;
             for (k = 1; k < len; k++) {
@@ -28,6 +31,9 @@ namespace cospider {
         } else if (i < 1000 && len == 4) {
             str += "0" + i;
         }
+         else if( i >= 1000 )
+            str += i;
+        
         return str;
     }
 
@@ -41,6 +47,41 @@ namespace cospider {
             angle = 300;
 
         angle = angle * 999 / 300;
+        // lock safe angle
+        switch( index )
+        {
+            case 0: // [180-680]
+                if( angle < 180 )
+                    angle = 180;
+                if( angle > 680 )
+                    angle = 680;
+            break;
+            case 1: // [200-900]
+                if( angle <200 )
+                    angle = 200
+                if( angle > 900 )
+                    angle = 200
+            break;
+            case 4: // [200-780]
+                if (angle < 200)
+                    angle = 200
+                if (angle > 780)
+                    angle = 780
+            break;
+            case 5: // 300-840
+                if (angle < 300)
+                    angle = 300
+                if (angle > 840)
+                    angle = 840
+            break;
+            default: // [200-820]
+                if (angle < 200)
+                    angle = 200
+                if (angle > 820)
+                    angle = 820
+            break;        
+        }
+        
         let cmd = "AT+1" + addParameter(index,2) + addParameter(angle,3) + addParameter(time,3)+"000#";
         serial.writeString(cmd);
     }
